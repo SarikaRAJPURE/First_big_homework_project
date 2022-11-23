@@ -1,4 +1,4 @@
-//Create a new variable called “users” and set it equal to the copied array
+//6.Create a new variable called “users” and set it equal to the copied array
 
 let users = [
     {
@@ -240,8 +240,13 @@ let users = [
 const UpdatePhnNum = users.forEach(user => user.phone = null);
 console.log(users);
 
-//8.Make a function called getUserInfo that returns the user object 
-//found using the email passed as a parameter
+/* 
+8.Make a function called getUserInfo that returns the user object 
+found using the email passed as a parameter
+9.Kurtis Weissnat (Telly.Hoeger@billy.biz)  just submitted a request to change his username to “Eren Yeager”. We want to be able to change people’s usernames easily. 
+Make a function that takes 2 parameters “email” and “newUsername”
+The function should change the username of the user with that email
+Pass your arguments changeUsername("Telly.Hoeger@billy.biz", “Eren Yeager”) */
 
 const getUserInfo = (email, newUsername) => {
     users.forEach(user => {
@@ -254,3 +259,47 @@ const getUserInfo = (email, newUsername) => {
 getUserInfo("Telly.Hoeger@billy.biz", "Eren Yeager");
 console.log(users[6]);
 
+
+/* 10. We just started a points program and have a list of how many points each user 
+gets each month based on their subscription. [50, 20, 40, 33, 60, 20, 90, 110, 15, 30] 
+The array is ordered so that arr[0] ‘50’ is for the first user, etc.
+Make a function that will Iterate through this array, grab the data, and 
+create new properties on the objects called monthlyPoints and set it equal to the data
+For example to first user should have a property monthlyPoints: 50 */
+
+let points=[50, 20, 40, 33, 60, 20, 90, 110, 15, 30];
+const addMonthlyPoints = users.forEach(user=> { 
+    user.monthlyPoints=points[users.indexOf(user)]; 
+});
+    
+console.log(users);
+
+//11.Make a variable months and set it equal to a number
+let months=10;
+//12.Make a function that For every month, add points to the users’ account.
+const updatePoints= users.forEach(user => user.monthlyPoints=user.monthlyPoints*months);
+console.log(users);
+
+
+
+/* 13.This month is special! We are going to add an additional 10% to everyone’s point 
+      totals! Create a function to do this (example: if someone has 200 points,
+      we will bump it up to 220) */
+
+      const addExtraTenPercentpoints=users.forEach(user => user.monthlyPoints=user.monthlyPoints+user.monthlyPoints*0.10);
+      console.log(users);
+
+      /* 14.The user with email Chaim_McDermott@dana.io has submitted a request to delete her account.
+ Make a function that will remove her from the array (taking the email as a parameter). */
+
+ const deleteAccount=(email) => {
+    users.forEach(user => {
+        if (user.email == email) {
+            users.splice(users.indexOf(user),1);
+           
+        }
+    })
+
+};
+deleteAccount("Chaim_McDermott@dana.io");
+console.log(users);
